@@ -1,0 +1,59 @@
+data:
+  chembl_target_id: "CHEMBL203"  # EGFR
+  bioactivity_type: "IC50"
+  output_dir: "data"
+
+features:
+  fingerprint_type: "morgan"
+  fp_radius: 2
+  fp_nbits: 2048
+  descriptors:
+    - MolWt
+    - LogP
+    - NumHDonors
+    - NumHAcceptors
+    - TPSA
+    - NumRotatableBonds
+
+model:
+  test_size: 0.2
+  random_state: 42
+  cv_folds: 5
+  random_forest:
+    n_estimators: [100, 200, 500]
+    max_depth: [10, 20, null]
+    min_samples_split: [2, 5, 10]
+  xgboost:
+    n_estimators: [100, 200, 500]
+    max_depth: [3, 6, 10]
+    learning_rate: [0.01, 0.1, 0.3]
+    subsample: [0.8, 1.0]
+  gnn:
+    hidden_channels: [64, 128]
+    num_layers: [2, 3, 4]
+    dropout: [0.1, 0.2, 0.3]
+    learning_rate: [0.001, 0.0001]
+    epochs: 200
+    batch_size: 32
+    patience: 20  # early stopping
+
+mlflow:
+  tracking_uri: "mlruns"
+  experiment_name: "egfr_ic50_prediction"
+
+virtual_screening:
+  library: "enamine_diversity"
+  pIC50_threshold: 6.0
+  top_n_hits: 50
+
+docking:
+  receptor_grid: "data/receptor/egfr_glide_grid.zip"
+  precision: "SP"  # SP or XP
+  top_n_for_docking: 50
+  top_n_for_md: 2
+
+md_simulation:
+  force_field: "amber99sb-ildn"
+  water_model: "tip3p"
+  simulation_time_ns: 100
+  temperature_k: 300

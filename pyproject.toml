@@ -1,7 +1,45 @@
 [project]
 name = "egfr-drugdiscovery-pipeline"
 version = "0.1.0"
-description = "Add your description here"
+description = "End-to-end EGFR drug discovery pipeline: ML/GNN IC50 prediction, virtual screening, docking, and MD simulation"
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = []
+license = {text = "MIT"}
+dependencies = [
+    # Data & Cheminformatics
+    "chembl-webresource-client",
+    "rdkit",
+    "pandas",
+    "numpy",
+
+    # Classical ML
+    "scikit-learn",
+    "xgboost",
+
+    # Deep Learning (GNN)
+    "torch",
+    "torch-geometric",
+
+    # Experiment Tracking
+    "mlflow",
+
+    # Visualization
+    "matplotlib",
+    "seaborn",
+    "plotly",
+
+    # Web App
+    "streamlit",
+
+    # Utilities
+    "joblib",
+    "pyyaml",
+    "scipy",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.scripts]
+egfr-pipeline = "main:main"

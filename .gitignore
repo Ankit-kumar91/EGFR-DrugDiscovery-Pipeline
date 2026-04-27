@@ -216,3 +216,4 @@ mlruns/
 # Artifacts (trained models, pickled files)
 artifacts/
 notebooks/artifacts/
+.claude
