@@ -3,7 +3,7 @@ name = "egfr-drugdiscovery-pipeline"
 version = "0.1.0"
 description = "End-to-end EGFR drug discovery pipeline: ML/GNN IC50 prediction, virtual screening, docking, and MD simulation"
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = "<=3.11"
 license = {text = "MIT"}
 dependencies = [
     # Data & Cheminformatics

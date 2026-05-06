@@ -217,3 +217,4 @@ mlruns/
 artifacts/
 notebooks/artifacts/
 .claude
+CLAUDE.md

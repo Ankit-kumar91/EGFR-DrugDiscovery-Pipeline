@@ -1,0 +1,12 @@
+
+rdkit==2025.9.3
+pandas
+numpy
+chembl_webresource_client
+tqdm
+
+# End-to-end deployment dependencies
+streamlit>=1.30.0
+evidently>=0.4.0
+plotly>=5.18.0
+python-multipart>=0.0.6
